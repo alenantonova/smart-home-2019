@@ -14,10 +14,10 @@ public class LightEventHandler implements EventHandler {
 
   public void handleEvent(SmartHome smartHome, SensorEvent event) {
     if(event.getType() == LIGHT_ON) {
-      Action<Light> action = new TurnOnLight(event.getObjectId());
+      Action action = new TurnOnLight(event.getObjectId());
       smartHome.execute(action);
     } else if (event.getType() == LIGHT_OFF) {
-      Action<Light> action = new TurnOffLight(event.getObjectId());
+      Action action = new TurnOffLight(event.getObjectId());
       smartHome.execute(action);
     }
   }

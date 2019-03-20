@@ -1,6 +1,8 @@
 package ru.sbt.mipt.oop;
 
-public class Light {
+import ru.sbt.mipt.oop.action.Action;
+
+public class Light implements Actionable {
     private boolean isOn;
     private final String id;
 
@@ -19,5 +21,9 @@ public class Light {
 
     public void setOn(boolean on) {
         isOn = on;
+    }
+
+    public void execute(Action action) {
+        action.run(this);
     }
 }

@@ -27,16 +27,8 @@ public class Room implements Actionable {
     }
 
     public void execute(Action action) {
-        if(action.get_area().equals("doors")) {
-            for(Door door: doors) {
-                action.run(door, name);
-            }
-        }
-
-        if(action.get_area().equals("lights")) {
-            for(Light light: lights) {
-                action.run(light, name);
-            }
-        }
+        action.run(this);
+        lights.forEach(light -> light.execute(action));
+        doors.forEach(door -> door.execute(action));
     }
 }
