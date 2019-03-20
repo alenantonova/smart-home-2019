@@ -5,26 +5,34 @@ import ru.sbt.mipt.oop.Door;
 public class OpenDoor implements Action<Door> {
   String door_id;
   String location;
+  String result;
 
 
   public OpenDoor(String object_id) {
     door_id = object_id;
     location = "none";
+    result = "none";
   }
 
-  public String get_area() {
-    return "doors";
+  public void set_location(String location_name) {
+    location = location_name;
   }
 
   public String get_location() {
     return location;
   }
 
-  public void run(Door object, String room_name) {
+  public void print_result() {
+    System.out.println(result + " in room " + location + ".");
+  }
+
+  public boolean run(Door object) {
     if(door_id.equals(object.getId()) || door_id.equals("all")) {
       object.setOpen(true);
-      location = room_name;
-      System.out.println("Door " + object.getId() + " in room " + room_name + " was opened.");
+      result = "Door " + object.getId() + " was opened";
+      return true;
+    } else {
+      return false;
     }
   }
 
