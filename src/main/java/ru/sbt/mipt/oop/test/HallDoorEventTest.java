@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.sbt.mipt.oop.Door;
 import ru.sbt.mipt.oop.FileSmartHomeReader;
-import ru.sbt.mipt.oop.handler.DoorEventHandler;
 import ru.sbt.mipt.oop.handler.HallDoorEventHandler;
 import ru.sbt.mipt.oop.Light;
 import ru.sbt.mipt.oop.Room;
@@ -22,8 +21,6 @@ public class HallDoorEventTest {
     FileSmartHomeReader reader = new FileSmartHomeReader();
     SmartHome smarthome = reader.loadHome("smart-home-1.js");
     SensorEvent test_event = new SensorEvent(DOOR_CLOSED, "4");
-    DoorEventHandler handler_to_close = new DoorEventHandler();
-    handler_to_close.handleEvent(smarthome, test_event);
     HallDoorEventHandler handler = new HallDoorEventHandler();
     handler.handleEvent(smarthome, test_event);
     for(Room room: smarthome.getRooms()) {
