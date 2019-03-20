@@ -13,7 +13,7 @@ public class Application {
         SmartHome smartHome = reader.loadHome("smart-home-1.js");
         // начинаем цикл обработки событий
         RandomEventsMiner miner = new RandomEventsMiner();
-        Collection<EventHandlerDecorator> typeRecognizer = createEventHandler();
+        Collection<EventHandler> typeRecognizer = createEventHandler();
         SensorEvent event = miner.getNextSensorEvent();
         while (event != null) {
             System.out.println("Got event: " + event);
@@ -25,11 +25,10 @@ public class Application {
     }
 
 
-    private static Collection<EventHandlerDecorator> createEventHandler() {
-        Collection<EventHandlerDecorator> eventTypes = new ArrayList<>();
-        eventTypes.add(new EventHandlerDecorator(new LightEventHandler()));
-        eventTypes.add(new EventHandlerDecorator(new DoorEventHandler()));
-        eventTypes.add(new EventHandlerDecorator(new AlarmEventHandler()));
+    private static Collection<EventHandler> createEventHandler() {
+        Collection<EventHandler> eventTypes = new ArrayList<>();
+        eventTypes.add(new LightEventHandler());
+        eventTypes.add(new DoorEventHandler());
         return eventTypes;
     }
 }
