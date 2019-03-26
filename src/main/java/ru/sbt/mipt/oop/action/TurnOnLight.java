@@ -1,28 +1,41 @@
 package ru.sbt.mipt.oop.action;
 
 import ru.sbt.mipt.oop.Light;
+import ru.sbt.mipt.oop.Room;
 
-public class TurnOnLight implements Action<Light> {
+public class TurnOnLight implements Action {
   String light_id;
-  String location;
+  String room_name;
 
   public TurnOnLight(String object_id) {
     light_id = object_id;
+    room_name = "none";
   }
 
-  public String get_area() {
-    return "lights";
+  public String GetRoom() {return room_name;}
+
+  public void InspectRoom (Room room) {
+    if (light_id.equals("all")) {
+      room_name = room.getName();
+    } else {
+      for (Light light : room.getLights()) {
+        if (light.getId().equals(light_id)) {
+          room_name = room.getName();
+        }
+      }
+    }
   }
 
-  public String get_location() {
-    return location;
-  }
-
-  public void run(Light object, String room_name) {
-    if(light_id.equals(object.getId()) || light_id.equals("all")) {
-      object.setOn(true);
-      location = room_name;
-      System.out.println("Light " + object.getId() + " in room " + room_name + " was turned on.");
+  public void run(Object object) {
+    if(object instanceof Light) {
+      String cur_id = ((Light) object).getId();
+      if (light_id.equals(cur_id) || light_id.equals("all")) {
+        ((Light) object).setOn(true);
+        System.out
+            .println("Light " + cur_id + " in room " + room_name + " was turned on.");
+      }
+    } else if (object instanceof Room) {
+      InspectRoom((Room) object);
     }
   }
 
