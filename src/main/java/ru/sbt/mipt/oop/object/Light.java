@@ -1,5 +1,6 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.object;
 
+import ru.sbt.mipt.oop.Actionable;
 import ru.sbt.mipt.oop.action.Action;
 
 public class Light implements Actionable {

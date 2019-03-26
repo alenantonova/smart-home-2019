@@ -3,7 +3,8 @@ package ru.sbt.mipt.oop;
 import java.util.ArrayList;
 import java.util.Collection;
 import ru.sbt.mipt.oop.action.Action;
-import ru.sbt.mipt.oop.alarm.Alarm;
+import ru.sbt.mipt.oop.object.Alarm;
+import ru.sbt.mipt.oop.object.Room;
 
 public class SmartHome implements Actionable {
     Collection<Room> rooms;

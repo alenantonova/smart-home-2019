@@ -1,5 +1,7 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.event.SensorEvent;
+
 public class RandomEventsMiner implements EventsMiner {
   public SensorEvent getNextSensorEvent() {
     // pretend like we're getting the events from physical world, but here we're going to just generate some random events

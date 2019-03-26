@@ -1,6 +1,8 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.object;
 
 import java.util.Collection;
+
+import ru.sbt.mipt.oop.Actionable;
 import ru.sbt.mipt.oop.action.Action;
 
 public class Room implements Actionable {

@@ -3,7 +3,10 @@ package ru.sbt.mipt.oop;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import ru.sbt.mipt.oop.event.SensorEvent;
 import ru.sbt.mipt.oop.handler.*;
+import ru.sbt.mipt.oop.homereader.FileSmartHomeReader;
 
 public class Application {
 
@@ -13,7 +16,7 @@ public class Application {
         SmartHome smartHome = reader.loadHome("smart-home-1.js");
         // начинаем цикл обработки событий
         RandomEventsMiner miner = new RandomEventsMiner();
-        Collection<EventHandlerDecorator> typeRecognizer = createEventHandler();
+        Collection<EventHandler> typeRecognizer = createEventHandler();
         SensorEvent event = miner.getNextSensorEvent();
         while (event != null) {
             System.out.println("Got event: " + event);
@@ -25,11 +28,12 @@ public class Application {
     }
 
 
-    private static Collection<EventHandlerDecorator> createEventHandler() {
-        Collection<EventHandlerDecorator> eventTypes = new ArrayList<>();
-        eventTypes.add(new EventHandlerDecorator(new LightEventHandler()));
-        eventTypes.add(new EventHandlerDecorator(new DoorEventHandler()));
-        eventTypes.add(new EventHandlerDecorator(new AlarmEventHandler()));
-        return eventTypes;
+    private static Collection<EventHandler> createEventHandler() {
+        Collection<EventHandler> eventHandlers = new ArrayList<>();
+        eventHandlers.add(new EventHandlerDecorator(new LightEventHandler()));
+        eventHandlers.add(new EventHandlerDecorator(new DoorEventHandler()));
+        eventHandlers.add(new EventHandlerDecorator(new HallDoorEventHandler()));
+        eventHandlers.add(new AlarmEventHandler());
+        return eventHandlers;
     }
 }

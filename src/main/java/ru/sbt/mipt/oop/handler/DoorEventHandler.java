@@ -3,7 +3,7 @@ package ru.sbt.mipt.oop.handler;
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
 
-import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.event.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
 import ru.sbt.mipt.oop.action.Action;
 import ru.sbt.mipt.oop.action.CloseDoor;

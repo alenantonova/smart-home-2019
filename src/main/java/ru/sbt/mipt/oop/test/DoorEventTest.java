@@ -3,11 +3,11 @@ package ru.sbt.mipt.oop.test;
 import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.sbt.mipt.oop.Door;
+import ru.sbt.mipt.oop.object.Door;
 import ru.sbt.mipt.oop.handler.DoorEventHandler;
-import ru.sbt.mipt.oop.FileSmartHomeReader;
-import ru.sbt.mipt.oop.Room;
-import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.homereader.FileSmartHomeReader;
+import ru.sbt.mipt.oop.object.Room;
+import ru.sbt.mipt.oop.event.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
 
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;

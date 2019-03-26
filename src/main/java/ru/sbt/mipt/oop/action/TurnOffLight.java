@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop.action;
 
-import ru.sbt.mipt.oop.Light;
-import ru.sbt.mipt.oop.Room;
+import ru.sbt.mipt.oop.object.Light;
+import ru.sbt.mipt.oop.object.Room;
 
 public class TurnOffLight implements Action {
   String light_id;
@@ -34,7 +34,7 @@ public class TurnOffLight implements Action {
         System.out
             .println("Light " + cur_id + " in room " + room_name + " was turned off.");
       }
-    } else if (object instanceof Room) {
+    } else if (object instanceof Room && room_name.equals("none")) {
       InspectRoom((Room) object);
     }
   }
