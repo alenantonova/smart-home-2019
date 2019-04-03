@@ -2,24 +2,23 @@ package ru.sbt.mipt.oop.test;
 
 import static ru.sbt.mipt.oop.SensorEventType.ALARM_ACTIVATE;
 import static ru.sbt.mipt.oop.SensorEventType.ALARM_DEACTIVATE;
-import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
 
 import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.sbt.mipt.oop.Door;
-import ru.sbt.mipt.oop.FileSmartHomeReader;
-import ru.sbt.mipt.oop.Room;
-import ru.sbt.mipt.oop.SensorAlarmEvent;
-import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.object.Door;
+import ru.sbt.mipt.oop.homereader.FileSmartHomeReader;
+import ru.sbt.mipt.oop.object.Room;
+import ru.sbt.mipt.oop.event.SensorAlarmEvent;
+import ru.sbt.mipt.oop.event.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
-import ru.sbt.mipt.oop.alarm.ActiveState;
-import ru.sbt.mipt.oop.alarm.Alarm;
-import ru.sbt.mipt.oop.alarm.AlarmState;
-import ru.sbt.mipt.oop.alarm.DeActiveState;
+import ru.sbt.mipt.oop.object.alarmstates.ActiveState;
+import ru.sbt.mipt.oop.object.Alarm;
+import ru.sbt.mipt.oop.object.alarmstates.AlarmState;
+import ru.sbt.mipt.oop.object.alarmstates.DeActiveState;
 import ru.sbt.mipt.oop.handler.AlarmEventHandler;
-import ru.sbt.mipt.oop.handler.EventHandlerDecorator;
+import ru.sbt.mipt.oop.EventHandlerDecorator;
 
 public class AlarmEventTest {
 
@@ -36,7 +35,7 @@ public class AlarmEventTest {
 
     SmartHome smarthome = GetTestHome();
 
-    EventHandlerDecorator handler = new EventHandlerDecorator(new AlarmEventHandler());
+    AlarmEventHandler handler = new AlarmEventHandler();
 
     SensorEvent test_activate = new SensorAlarmEvent(ALARM_ACTIVATE, "1234");
     SensorEvent test_deactivate = new SensorAlarmEvent(ALARM_DEACTIVATE, "1234");

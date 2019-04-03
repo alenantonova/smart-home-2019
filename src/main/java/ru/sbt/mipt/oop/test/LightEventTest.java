@@ -6,11 +6,11 @@ import static ru.sbt.mipt.oop.SensorEventType.LIGHT_ON;
 import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.sbt.mipt.oop.FileSmartHomeReader;
-import ru.sbt.mipt.oop.Light;
+import ru.sbt.mipt.oop.homereader.FileSmartHomeReader;
+import ru.sbt.mipt.oop.object.Light;
 import ru.sbt.mipt.oop.handler.LightEventHandler;
-import ru.sbt.mipt.oop.Room;
-import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.object.Room;
+import ru.sbt.mipt.oop.event.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
 
 public class LightEventTest {

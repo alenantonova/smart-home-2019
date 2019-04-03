@@ -1,17 +1,18 @@
-package ru.sbt.mipt.oop.alarm;
+package ru.sbt.mipt.oop.object.alarmstates;
+
+import ru.sbt.mipt.oop.object.Alarm;
 
 public class DeActiveState extends State{
 
-  DeActiveState(Alarm alarm) {
+  public DeActiveState(Alarm alarm) {
     super(alarm);
-    alarm.set_active(false);
 
   }
 
   @Override
   public void Activate(String combination) {
     if (alarm.CheckCode(combination)) {
-      alarm.changeState(new ActiveState(alarm));
+      alarm.activate();
     }
   }
 

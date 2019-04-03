@@ -3,8 +3,8 @@ package ru.sbt.mipt.oop.handler;
 import static ru.sbt.mipt.oop.SensorEventType.ALARM_ACTIVATE;
 import static ru.sbt.mipt.oop.SensorEventType.ALARM_DEACTIVATE;
 
-import ru.sbt.mipt.oop.SensorAlarmEvent;
-import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.event.SensorAlarmEvent;
+import ru.sbt.mipt.oop.event.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
 
 public class AlarmEventHandler implements EventHandler {

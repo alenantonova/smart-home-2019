@@ -1,12 +1,17 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.event;
+
+import ru.sbt.mipt.oop.SensorEventType;
 
 public class SensorEvent {
-    private final SensorEventType type;
-    private final String objectId;
+    private SensorEventType type;
+    private String objectId;
 
     public SensorEvent(SensorEventType type, String objectId) {
         this.type = type;
         this.objectId = objectId;
+    }
+
+    public SensorEvent() {
     }
 
     public SensorEventType getType() {

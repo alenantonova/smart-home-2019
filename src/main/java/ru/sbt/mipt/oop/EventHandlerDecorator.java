@@ -1,13 +1,11 @@
-package ru.sbt.mipt.oop.handler;
+package ru.sbt.mipt.oop;
 
-import static ru.sbt.mipt.oop.SensorEventType.ALARM_ACTIVATE;
-import static ru.sbt.mipt.oop.SensorEventType.ALARM_DEACTIVATE;
-
-import com.sun.xml.internal.ws.client.SenderException;
-import ru.sbt.mipt.oop.SensorEvent;
+//import com.sun.xml.internal.ws.client.SenderException;
+import ru.sbt.mipt.oop.event.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
-import ru.sbt.mipt.oop.alarm.ActiveState;
-import ru.sbt.mipt.oop.alarm.AlarmState;
+        import ru.sbt.mipt.oop.handler.EventHandler;
+        import ru.sbt.mipt.oop.object.alarmstates.ActiveState;
+import ru.sbt.mipt.oop.object.alarmstates.AlarmState;
 
 public class EventHandlerDecorator implements EventHandler {
 
@@ -20,12 +18,10 @@ public class EventHandlerDecorator implements EventHandler {
   @Override
   public void handleEvent (SmartHome smartHome, SensorEvent event) {
     if (smartHome.getAlarm().getState() instanceof ActiveState) {
-      if(event.getType() != ALARM_ACTIVATE && event.getType() != ALARM_DEACTIVATE) {
-        smartHome.getAlarm().changeState(new AlarmState(smartHome.getAlarm()));
+
+        smartHome.getAlarm().alarm();
         System.out.println("sending sms");
-      } else {
-        wrappee.handleEvent(smartHome, event);
-      }
+
     } else if (smartHome.getAlarm().getState() instanceof AlarmState) {
         System.out.println("sending sms");
     } else {
