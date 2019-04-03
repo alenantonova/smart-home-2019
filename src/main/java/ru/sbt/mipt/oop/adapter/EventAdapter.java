@@ -6,15 +6,18 @@ import ru.sbt.mipt.oop.event.SensorEvent;
 
 import static ru.sbt.mipt.oop.SensorEventType.*;
 
-public class EventAdapter extends SensorEvent {
+public class EventAdapter {
 
     CCSensorEvent ccEvent;
+    SensorEvent event;
 
-    public EventAdapter(CCSensorEvent event) { this.ccEvent = event; }
+    public EventAdapter(CCSensorEvent event) {
+        this.ccEvent = event;
+        this.event = new SensorEvent(getType(ccEvent.getEventType()), ccEvent.getObjectId());
+    }
 
-    @Override
-    public SensorEventType getType() {
-        switch (ccEvent.getEventType()) {
+    private SensorEventType getType(String ccType) {
+        switch (ccType) {
             case "LightIsOn":
                 return LIGHT_ON;
             case "LightIsOff":
@@ -32,8 +35,7 @@ public class EventAdapter extends SensorEvent {
         }
     }
 
-    @Override
-    public String getObjectId() {
-        return ccEvent.getObjectId();
+    public SensorEvent getAdaptEvent() {
+        return this.event;
     }
 }

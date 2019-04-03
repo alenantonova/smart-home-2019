@@ -1,10 +1,8 @@
 package ru.sbt.mipt.oop;
 
-//import com.sun.xml.internal.ws.client.SenderException;
 import ru.sbt.mipt.oop.event.SensorEvent;
-import ru.sbt.mipt.oop.SmartHome;
-        import ru.sbt.mipt.oop.handler.EventHandler;
-        import ru.sbt.mipt.oop.object.alarmstates.ActiveState;
+import ru.sbt.mipt.oop.handler.EventHandler;
+import ru.sbt.mipt.oop.object.alarmstates.ActiveState;
 import ru.sbt.mipt.oop.object.alarmstates.AlarmState;
 
 public class EventHandlerDecorator implements EventHandler {
