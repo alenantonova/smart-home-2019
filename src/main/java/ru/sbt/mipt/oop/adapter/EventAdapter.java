@@ -9,11 +9,9 @@ import static ru.sbt.mipt.oop.SensorEventType.*;
 public class EventAdapter {
 
     CCSensorEvent ccEvent;
-    SensorEvent event;
 
     public EventAdapter(CCSensorEvent event) {
         this.ccEvent = event;
-        this.event = new SensorEvent(getType(ccEvent.getEventType()), ccEvent.getObjectId());
     }
 
     private SensorEventType getType(String ccType) {
@@ -36,6 +34,7 @@ public class EventAdapter {
     }
 
     public SensorEvent getAdaptEvent() {
-        return this.event;
+        SensorEvent event = new SensorEvent(getType(ccEvent.getEventType()), ccEvent.getObjectId());
+        return event;
     }
 }

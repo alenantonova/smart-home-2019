@@ -5,12 +5,14 @@ import ru.sbt.mipt.oop.object.Door;
 import ru.sbt.mipt.oop.object.Light;
 import ru.sbt.mipt.oop.object.Room;
 
-public class CloseHallDoorCommand extends Command {
+public class CloseHallDoorCommand implements Command {
+    private SmartHome smarthome;
+
     public CloseHallDoorCommand(SmartHome smarthome) {
-        super(smarthome);
+
+        this.smarthome = smarthome;
     }
 
-    @Override
     public boolean execute() {
         for(Room room: smarthome.getRooms()) {
             if (room.getName().equals("hall")) {

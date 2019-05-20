@@ -1,21 +1,23 @@
 package ru.sbt.mipt.oop.command;
 
 import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.object.Alarm;
 
 import java.util.Scanner;
 
-public class ActivateAlarmCommand extends Command {
-    public ActivateAlarmCommand(SmartHome smarthome) {
-        super(smarthome);
+public class ActivateAlarmCommand implements Command {
+    private Alarm alarm;
+    private String code;
+
+    public ActivateAlarmCommand(Alarm alarm, String code) {
+        this.alarm = alarm;
+        this.code = code;
     }
 
-    @Override
+
     public boolean execute() {
-        System.out.println("Please enter activation code:");
-        Scanner in = new Scanner(System.in);
-        String code = in.nextLine();
-        if(smarthome.getAlarm().CheckCode(code)) {
-            smarthome.getAlarm().activate();
+        if(alarm.CheckCode(code)) {
+            alarm.activate();
             return true;
         }
         return false;

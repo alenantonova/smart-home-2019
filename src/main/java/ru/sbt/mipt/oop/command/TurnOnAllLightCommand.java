@@ -4,12 +4,14 @@ import ru.sbt.mipt.oop.SmartHome;
 import ru.sbt.mipt.oop.object.Light;
 import ru.sbt.mipt.oop.object.Room;
 
-public class TurnOnAllLightCommand extends Command{
+public class TurnOnAllLightCommand implements Command{
+    private SmartHome smarthome;
+
     public TurnOnAllLightCommand(SmartHome smarthome) {
-        super(smarthome);
+
+        this.smarthome = smarthome;
     }
 
-    @Override
     public boolean execute() {
         for(Room room: smarthome.getRooms()) {
             for(Light light: room.getLights()) {

@@ -1,15 +1,18 @@
 package ru.sbt.mipt.oop.command;
 
-import ru.sbt.mipt.oop.SmartHome;
 
-public class AlarmOnCommand extends Command{
-    public AlarmOnCommand(SmartHome smarthome) {
-        super(smarthome);
+import ru.sbt.mipt.oop.object.Alarm;
+
+public class AlarmOnCommand implements Command{
+    private Alarm alarm;
+
+    public AlarmOnCommand(Alarm alarm) {
+
+        this.alarm = alarm;
     }
 
-    @Override
     public boolean execute() {
-        smarthome.getAlarm().alarm();
+        alarm.alarm();
         return true;
     }
 }

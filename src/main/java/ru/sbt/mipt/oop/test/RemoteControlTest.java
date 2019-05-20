@@ -3,7 +3,7 @@ package ru.sbt.mipt.oop.test;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.sbt.mipt.oop.SmartHome;
-import ru.sbt.mipt.oop.SmartHomeRemoteControl;
+import ru.sbt.mipt.oop.object.SmartHomeRemoteControl;
 import ru.sbt.mipt.oop.command.ActivateAlarmCommand;
 import ru.sbt.mipt.oop.command.AlarmOnCommand;
 import ru.sbt.mipt.oop.command.CloseHallDoorCommand;
@@ -44,7 +44,7 @@ public class RemoteControlTest {
         FileSmartHomeReader reader = new FileSmartHomeReader();
         SmartHome smarthome = reader.loadHome("smart-home-1.js");
         SmartHomeRemoteControl controller = new SmartHomeRemoteControl("1234");
-        Command testCommand = new ActivateAlarmCommand(smarthome);
+        Command testCommand = new ActivateAlarmCommand(smarthome.getAlarm(), "0000");
         controller.setCommandToButton("B", testCommand);
         controller.onButtonPressed("1", "1234");
         Assert.assertFalse(smarthome.getAlarm().getState() instanceof ActiveState);
@@ -57,7 +57,7 @@ public class RemoteControlTest {
         SmartHomeRemoteControl controller = new SmartHomeRemoteControl("1234");
         Alarm testAlarm = new Alarm("1121");
         smarthome.set_alarm(testAlarm);
-        Command testCommand = new AlarmOnCommand(smarthome);
+        Command testCommand = new AlarmOnCommand(smarthome.getAlarm());
         controller.setCommandToButton("B", testCommand);
         controller.onButtonPressed("B", "1234");
         Assert.assertTrue(smarthome.getAlarm().getState() instanceof AlarmState);
