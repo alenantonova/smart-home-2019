@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.miner;
 
 import ru.sbt.mipt.oop.event.SensorEvent;
 
